@@ -1,15 +1,25 @@
-'''Este archivo define el modelo de usuarios en la base de datos'''
-from sqlalchemy import Column, Integer, String, Boolean,DateTime,Enum,Date,ForeignKey
-from sqlalchemy.orm import relationship
+'''Este archivo define el modelo de auto_servicio en la base de datos'''
+
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey,DateTime
+from enum import Enum
+from sqlalchemy.orm import relationship 
 from config.db import Base
 
-class User(Base):
-    '''Modelo para la tabla de usuarios'''
-    __tablename__ = "tbc_usuarios"
+class Estatus (Enum):
+    Programando="Programando"
+    Proceso="En Proceso"
+    Realizado="Realizado"
+
+class AutoServicio(Base):
+    '''Modelo para la tabla de auto_servicio'''
+    __tablename__ = "tbd_auto_servicio"
     id = Column(Integer, primary_key=True, index=True)
-    Rol_id = Column(Integer, ForeignKey("tbc_roles.id"))  # Llave foránea a la tabla de roles
-    nombre = Column(String(50))
-    apellidoPaterno = Column(String(50))
-    apellidoMaterno = Column(String(50))
-    password = Column(String(100), nullable=False)
-    Rol_id = Column(Integer, nullable=False)
+    auto_id=Column (Integer, ForeignKey("tbb_autos.autoid"))
+    cajero_id= Column(Integer, ForeignKey("tbb_usuarios.id"))
+    operador_id= Column(Integer, ForeignKey("tbb_usuarios.id"))
+    servicio_id= Column(Integer, ForeignKey("tbc_servicios.id"))
+    fecha= Column(DateTime)
+    estatus= Column(String(20), default=Estatus.Programando.value)
+    estado= Column(Boolean, default=True)
+    fecha_registro= Column(DateTime)
+    fecha_actualizacion= Column(DateTime)
