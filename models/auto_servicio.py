@@ -15,8 +15,8 @@ class AutoServicio(Base):
     __tablename__ = "tbd_auto_servicio"
     id = Column(Integer, primary_key=True, index=True)
     auto_id=Column (Integer, ForeignKey("tbb_autos.autoid"))
-    cajero_id= Column(Integer, ForeignKey("tbb_usuarios.id"))
-    operador_id= Column(Integer, ForeignKey("tbb_usuarios.id"))
+    cajero_id= Column(Integer, ForeignKey("tbb_usuarios.Id"))
+    operador_id= Column(Integer, ForeignKey("tbb_usuarios.Id"))
     servicio_id= Column(Integer, ForeignKey("tbc_servicios.id"))
     fecha= Column(DateTime)
     estatus= Column(String(20), default=Estatus.Programando.value)
