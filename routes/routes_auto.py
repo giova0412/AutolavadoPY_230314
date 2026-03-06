@@ -26,10 +26,14 @@ def read_auto(id: int, db: Session = Depends(get_db), current_user: str = Depend
 
 @auto.post("/autos/", response_model=VehiculoSchema, tags=["Autos"])
 def create_auto_route(vehiculo: VehiculoCreate, db: Session = Depends(get_db), current_user: str = Depends(auth.get_current_user)):
+    existente = db.query(VehiculoModel).filter(VehiculoModel.placa == vehiculo.placa).first()
+    if existente:
+        raise HTTPException(status_code=400, detail="Ya existe un vehículo con esa placa")
+    
     db_auto = VehiculoModel(
-        usuario_Id=vehiculo.usuario_Id, # Asegúrate que coincida con las mayúsculas de tu modelo
+        usuario_Id=vehiculo.usuario_Id,
         placa=vehiculo.placa,
-        # marca=vehiculo.marca, # Cuidado: 'marca' NO estaba en el modelo que me pasaste
+        marca=vehiculo.marca,
         modelo=vehiculo.modelo,
         serie=vehiculo.serie,
         color=vehiculo.color,
