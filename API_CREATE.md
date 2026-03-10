@@ -572,3 +572,17 @@ GET /reporte/1?descuento=20
   "message": "Reporte generado exitosamente"
 }
 ```
+pruebaa
+{
+  "vehiculo_Id": 1,
+  "cajero_Id": 1,
+  "operativo_Id": 1,
+  "servicio_Id": 1,
+  "fecha": "2026-03-10",
+  "hora": "10:30:00",
+  "estatus": "completado",
+  "estado": true,
+  "fecha_registro": "2026-03-10T02:18:00.000Z",
+  "fecha_actualizacion": "2026-03-10T02:18:00.000Z"
+}
+git

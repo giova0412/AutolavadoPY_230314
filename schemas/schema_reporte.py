@@ -14,9 +14,9 @@ class ClienteVehiculo(BaseModel):
     cliente_nombre: str
     vehiculo_id: int
     vehiculo_placa: str
-    vehiculo_marca: str
-    vehiculo_modelo: str
-    vehiculo_color: str
+    vehiculo_marca: Optional[str] = None
+    vehiculo_modelo: Optional[str] = None
+    vehiculo_color: Optional[str] = None
 
 class ServicioInfo(BaseModel):
     servicio_id: int

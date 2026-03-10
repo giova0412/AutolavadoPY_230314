@@ -9,12 +9,12 @@ class VehiculoBase(BaseModel):
     '''Clase para modelar los campos de tabla Vehiculo'''
     usuario_Id: int
     placa: str
-    marca: str 
-    modelo: str
-    serie: str
-    color: str
-    tipo: str
-    anio: int | str
+    marca: Optional[str] = None
+    modelo: Optional[str] = None
+    serie: Optional[str] = None
+    color: Optional[str] = None
+    tipo: Optional[str] = None
+    anio: Optional[int | str] = None
     estado: bool = True
     fecha_registro: Optional[datetime] = None
     fecha_actualizacion: Optional[datetime] = None
